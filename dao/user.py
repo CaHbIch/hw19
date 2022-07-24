@@ -30,3 +30,9 @@ class UserDAO:
 
         self.session.add(user)
         self.session.commit()
+
+    def delete(self, bid):
+        """ Удаляет пользователя """
+        movie = self.get_one_user(bid)
+        self.session.delete(movie)
+        self.session.commit()

@@ -21,6 +21,9 @@ class UserService:
     def update(self, user_d):
         return self.dao.update(user_d)
 
+    def delete(self, bid):
+        return self.dao.delete(bid)
+
 
 def get_hash(password):
     return hashlib.pbkdf2_hmac(
