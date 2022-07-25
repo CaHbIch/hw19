@@ -11,13 +11,13 @@ class AuthView(Resource):
     def post(self):
         """Авторизация пользователя"""
         req_json = request.json
-        username = req_json.get('username', None)
-        password = req_json.get('password', None)
-        if not (username and password):
+        username = req_json.get('username')
+        password = req_json.get('password')
+        if None in [username, password]:
             return "Нужно имя и пароль", 400
         tokens = auth_service.generate_tokens(username, password)
         if tokens != False:
-            return tokens
+            return tokens, 201
         else:
             return "Ошибка в запросе", 400
 

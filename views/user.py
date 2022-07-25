@@ -37,7 +37,7 @@ class UserView(Resource):
         user_service.update(req_json)
         return "", 204
 
-   #@admin_required  # Удалять пользователя может только Admin
+    #@admin_required  # Удалять пользователя может только Admin
     def delete(self, bid):
         user_service.delete(bid)
         return "", 204

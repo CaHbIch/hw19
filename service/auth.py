@@ -1,6 +1,8 @@
 import calendar
 import datetime
 import jwt
+from flask_restx import abort
+
 from auth.constants import SECRET_KEY, ALGORITM
 
 from service.user import UserService
@@ -13,8 +15,8 @@ class AuthService:
     def generate_tokens(self, username, password, is_refresh=False):
         user = self.user_service.get_user_by_username(username)
 
-        if not user:
-            return False
+        if user is None:
+            raise abort(404)
 
         if not is_refresh:
             if not self.user_service.compare_passwords(user.password, password):
