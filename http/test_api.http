@@ -1,3 +1,4 @@
+
 GET http://127.0.0.1:10001/movies/
 Accept: application/json
 
@@ -92,3 +93,47 @@ Content-Type: application/json
 ###
 
 DELETE http://127.0.0.1:10001/movies/21
+Accept: application/json
+Content-Type: application/json
+
+
+###
+GET http://127.0.0.1:10001/users/
+Content-Type: application/json
+###
+
+POST http://127.0.0.1:10001/users/
+Accept: application/json
+Content-Type: application/json
+
+{
+	"username": "vasya",
+	"password": "my_little_pony",
+	"role": "user"
+}
+###
+POST http://127.0.0.1:10001/users/
+Accept: application/json
+Content-Type: application/json
+
+{
+	"username": "oleg",
+	"password": "qwerty",
+	"role": "user"
+}
+
+###
+POST http://127.0.0.1:10001/users/
+Accept: application/json
+Content-Type: application/json
+
+{
+	"username": "oleg",
+	"password": "P@ssw0rd",
+	"role": "admin"
+}
+###
+
+DELETE http://127.0.0.1:10001/users/1
+Content-Type: application/json
+Authorization: JWT_token

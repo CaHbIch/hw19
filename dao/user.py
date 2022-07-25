@@ -14,6 +14,10 @@ class UserDAO:
         """ Возвращает пользователя по ID """
         return self.session.query(User).get_or_404(pk)
 
+    def get_user_by_username(self, username):
+        """Получить пользователя по имени"""
+        return self.session.query(User).filter(User.username == username).first()
+
     def create(self, user_d):
         """" Добавляет пользователя """
         ent = User(**user_d)

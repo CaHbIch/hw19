@@ -3,9 +3,9 @@ import json
 from flask import request
 from flask_restx import Resource, Namespace
 
+from auth.helpers import auth_required, admin_required
 from dao.model.user import UserSchema
 from implemented import user_service
-
 
 user_ns = Namespace('users')
 
@@ -37,6 +37,7 @@ class UserView(Resource):
         user_service.update(req_json)
         return "", 204
 
+   #@admin_required  # Удалять пользователя может только Admin
     def delete(self, bid):
         user_service.delete(bid)
         return "", 204

@@ -1,0 +1,20 @@
+POST http://127.0.0.1:10001/auth/
+Content-Type: application/json
+
+
+ {
+    "username": "oleg",
+    "password": "P@ssw0rd",
+    "role": "admin"
+}
+
+###
+POST http://127.0.0.1:10001/auth/
+Content-Type: application/json
+
+
+ {
+    "username": "oleg",
+    "password": "qwerty",
+    "role": "user"
+}
