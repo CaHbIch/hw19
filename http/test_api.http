@@ -1,52 +1,61 @@
-
 GET http://127.0.0.1:10001/movies/
 Accept: application/json
+Authorization: Bearer "JWT_token"
 
 ###
 
 GET http://127.0.0.1:10001/movies/?director_id=12
 Accept: application/json
+Authorization: Bearer "JWT_token"
 
 ###
 
 GET http://127.0.0.1:10001/movies/?genre_id=4
 Accept: application/json
+Authorization: Bearer "JWT_token"
 
 ###
 
 GET http://127.0.0.1:10001/movies/?year=2010
 Accept: application/json
+Authorization: Bearer "JWT_token"
 
 ###
 
 GET http://127.0.0.1:10001/directors/
 Accept: application/json
+Authorization: Bearer "JWT_token"
 
 ###
 
 GET http://127.0.0.1:10001/directors/1
 Accept: application/json
+Authorization: Bearer "JWT_token"
 
 ###
 
 GET http://127.0.0.1:10001/genres/
 Accept: application/json
+Authorization: Bearer "JWT_token"
 
 ###
 
 GET http://127.0.0.1:10001/genres/1
 Accept: application/json
+Authorization: Bearer "JWT_token"
 
 ###
 
 GET http://127.0.0.1:10001/movies/21
 Accept: application/json
+Authorization: Bearer "JWT_token"
 
 ###
 
 POST http://127.0.0.1:10001/movies/
 Accept: application/json
 Content-Type: application/json
+Authorization: Bearer jWT_token
 
 {
   "title": "Гарри Поттер мой кумир!",
@@ -61,9 +70,10 @@ Content-Type: application/json
 PUT http://127.0.0.1:10001/movies/21
 Accept: application/json
 Content-Type: application/json
+Authorization: Bearer "JWT_token"
 
 {
-  "id": 21,
+  "id": 1,
   "title": "-------",
   "trailer": "-----",
   "year": 0,
@@ -78,6 +88,7 @@ Content-Type: application/json
 PATCH http://127.0.0.1:10001/movies/3
 Accept: application/json
 Content-Type: application/json
+Authorization: Bearer "JWT_token"
 
 {
   "id": 21,
@@ -92,14 +103,16 @@ Content-Type: application/json
 
 ###
 
-DELETE http://127.0.0.1:10001/movies/21
+DELETE http://127.0.0.1:10001/movies/23
 Accept: application/json
 Content-Type: application/json
-
+Authorization: Bearer
 
 ###
 GET http://127.0.0.1:10001/users/
 Content-Type: application/json
+Authorization: Bearer "JWT_token"
+
 ###
 
 POST http://127.0.0.1:10001/users/
@@ -107,19 +120,9 @@ Accept: application/json
 Content-Type: application/json
 
 {
-	"username": "vasya",
-	"password": "my_little_pony",
-	"role": "user"
-}
-###
-POST http://127.0.0.1:10001/users/
-Accept: application/json
-Content-Type: application/json
-
-{
-	"username": "oleg",
-	"password": "qwerty",
-	"role": "user"
+  "username": "Vasya",
+  "password": "my_little_pony",
+  "role": "user"
 }
 
 ###
@@ -128,12 +131,24 @@ Accept: application/json
 Content-Type: application/json
 
 {
-	"username": "oleg",
-	"password": "P@ssw0rd",
-	"role": "admin"
+  "username": "Vadim",
+  "password": "qwerty",
+  "role": "user"
 }
+
+###
+POST http://127.0.0.1:10001/users/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "Oleg",
+  "password": "P@ssw0rd",
+  "role": "admin"
+}
+
 ###
 
-DELETE http://127.0.0.1:10001/users/6
+DELETE http://127.0.0.1:10001/users/4
 Content-Type: application/json
 Authorization: JWT_token

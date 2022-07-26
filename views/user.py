@@ -12,6 +12,7 @@ user_ns = Namespace('users')
 
 @user_ns.route('/')
 class UserView(Resource):
+    @admin_required
     def get(self):
         all_users = user_service.get_all()
         res = UserSchema(many=True).dump(all_users)
@@ -25,11 +26,13 @@ class UserView(Resource):
 
 @user_ns.route('/<int:bid>')
 class UserView(Resource):
+    @admin_required
     def get(self, bid):
         b = user_service.get_one(bid)
         sm_d = UserSchema().dump(b)
         return sm_d, 200
 
+    @admin_required
     def put(self, bid):
         req_json = json.loads(request.data)
         if "id" not in req_json:
@@ -37,7 +40,8 @@ class UserView(Resource):
         user_service.update(req_json)
         return "", 204
 
-    #@admin_required  # Удалять пользователя может только Admin
+    @auth_required
+    @admin_required  # Удалять пользователя может только Admin
     def delete(self, bid):
         user_service.delete(bid)
         return "", 204
